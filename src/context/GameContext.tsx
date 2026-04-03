@@ -132,7 +132,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const loadData = useCallback(async () => {
     try {
-      const { data: config } = await supabase.from('game_config').select('id, current_team, boss_active_team_id, boss_room_password, boss_vital_hr, boss_vital_bp, boss_vital_o2, boss_vital_nr, boss_points, boss_time_minutes, boss_time_seconds, intelligence_gate_code, intelligence_correct_number, intelligence_room_password, intelligence_points, intelligence_time_minutes, intelligence_time_seconds, intelligence_categories, team_rotation_flow').eq('id', 'main').single();
+      const { data: config } = await supabase.from('game_config').select('id, current_team, boss_active_team_id, boss_room_password, boss_vital_hr, boss_vital_bp, boss_vital_o2, boss_vital_nr, boss_points, boss_time_minutes, boss_time_seconds, boss_volunteer_1, boss_volunteer_2, boss_volunteer_3, intelligence_gate_code, intelligence_correct_number, intelligence_room_password, intelligence_points, intelligence_time_minutes, intelligence_time_seconds, intelligence_categories, team_rotation_flow').eq('id', 'main').single();
       const { data: rooms } = await supabase.from('rooms').select('*').order('sort_order');
       const { data: teams } = await supabase.from('teams').select('*');
       const { data: scores } = await supabase.from('team_scores').select('*');
