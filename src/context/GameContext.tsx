@@ -203,7 +203,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         volunteers: (volunteers || []).map(v => ({
           id: v.id,
           name: v.name,
-          password: v.password,
+          password: '',
         })),
         bossActiveTeamId: config.boss_active_team_id || null,
         teamRotationFlow: (config.team_rotation_flow as TeamRotationFlow) || {},
