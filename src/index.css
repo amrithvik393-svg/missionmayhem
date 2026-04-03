@@ -1,96 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 144 71% 3%;
+    --foreground: 152 100% 50%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 150 43% 4%;
+    --card-foreground: 152 100% 50%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 150 43% 4%;
+    --popover-foreground: 152 100% 50%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 152 100% 50%;
+    --primary-foreground: 144 71% 3%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 150 33% 12%;
+    --secondary-foreground: 152 100% 40%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 150 33% 12%;
+    --muted-foreground: 150 33% 20%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 152 100% 40%;
+    --accent-foreground: 144 71% 3%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 348 100% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning: 30 100% 50%;
+    --warning-foreground: 0 0% 0%;
 
-    --radius: 0.5rem;
+    --blue: 192 100% 50%;
 
-    --sidebar-background: 0 0% 98%;
+    --border: 152 50% 10%;
+    --input: 152 50% 10%;
+    --ring: 152 100% 50%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --radius: 0px;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 150 43% 4%;
+    --sidebar-foreground: 152 100% 40%;
+    --sidebar-primary: 152 100% 50%;
+    --sidebar-primary-foreground: 144 71% 3%;
+    --sidebar-accent: 150 33% 12%;
+    --sidebar-accent-foreground: 152 100% 40%;
+    --sidebar-border: 152 50% 10%;
+    --sidebar-ring: 152 100% 50%;
   }
 }
 
@@ -101,5 +59,108 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Share Tech Mono', monospace;
   }
 }
+
+/* Scanlines overlay */
+.scanlines::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.13) 2px, rgba(0,0,0,0.13) 4px);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.85; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+.animate-flicker {
+  animation: flicker 8s infinite;
+}
+
+@keyframes criticalPulse {
+  50% { opacity: 0.7; }
+}
+
+.animate-critical {
+  animation: criticalPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s forwards;
+}
+
+@keyframes flatDraw {
+  0% { width: 0%; }
+  100% { width: 80%; }
+}
+
+.animate-flat-draw {
+  animation: flatDraw 1.5s ease-out forwards;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Font utilities */
+.font-display {
+  font-family: 'Orbitron', monospace;
+}
+
+.font-mono {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Glow effects */
+.glow-green {
+  text-shadow: 0 0 20px hsl(var(--primary));
+}
+
+.glow-green-lg {
+  text-shadow: 0 0 60px hsl(var(--primary)), 0 0 120px hsla(152, 100%, 50%, 0.3);
+}
+
+.glow-red {
+  text-shadow: 0 0 60px hsl(var(--destructive)), 0 0 120px hsla(348, 100%, 60%, 0.4);
+}
+
+.glow-orange {
+  text-shadow: 0 0 60px hsl(var(--warning)), 0 0 120px hsla(30, 100%, 50%, 0.3);
+}
+
+/* Panel shadow */
+.panel-glow {
+  box-shadow: 0 0 40px hsla(152, 100%, 50%, 0.04);
+}
+
+/* Boss room document styles */
+.boss-doc-body h2 { font-family: 'Orbitron', monospace; font-size: 20px; letter-spacing: 4px; color: #ffb000; margin-bottom: 14px; border-bottom: 1px solid #2a1c00; padding-bottom: 6px; }
+.boss-doc-body p { margin-bottom: 14px; color: #cc8800; }
+.boss-doc-body strong { color: #ffb000; }
+.boss-doc-body blockquote { border-left: 2px solid #7a5200; padding-left: 12px; color: #7a5200; font-style: italic; margin: 14px 0; }
+.boss-doc-body .doc-warn { border: 1px solid #ff3300; padding: 10px 14px; color: #ff3300; margin: 14px 0; font-size: 10px; letter-spacing: 1px; line-height: 1.8; }
+.boss-doc-body .doc-info { border: 1px solid #7a5200; padding: 10px 14px; color: #7a5200; margin: 14px 0; font-size: 10px; letter-spacing: 1px; line-height: 1.8; }
+.boss-doc-body table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 11px; }
+.boss-doc-body td, .boss-doc-body th { border: 1px solid #2a1c00; padding: 7px 10px; letter-spacing: 1px; color: #cc8800; }
+.boss-doc-body th { background: #0d0900; color: #7a5200; font-size: 9px; letter-spacing: 2px; }
+.boss-doc-body .doc-photos { display: flex; gap: 16px; margin: 14px 0; }
+.boss-doc-body .doc-photo { flex: 1; border: 1px solid #7a5200; padding: 12px; background: #0a0700; text-align: center; font-size: 9px; color: #7a5200; letter-spacing: 2px; line-height: 1.5; }
+.boss-doc-body .photo-emoji { font-size: 36px; display: block; margin-bottom: 6px; }
