@@ -26,6 +26,9 @@ export type Database = {
           boss_vital_hr: number | null
           boss_vital_nr: number | null
           boss_vital_o2: number | null
+          boss_volunteer_1: string | null
+          boss_volunteer_2: string | null
+          boss_volunteer_3: string | null
           current_team: string | null
           id: string
           intelligence_categories: Json | null
@@ -49,6 +52,9 @@ export type Database = {
           boss_vital_hr?: number | null
           boss_vital_nr?: number | null
           boss_vital_o2?: number | null
+          boss_volunteer_1?: string | null
+          boss_volunteer_2?: string | null
+          boss_volunteer_3?: string | null
           current_team?: string | null
           id?: string
           intelligence_categories?: Json | null
@@ -72,6 +78,9 @@ export type Database = {
           boss_vital_hr?: number | null
           boss_vital_nr?: number | null
           boss_vital_o2?: number | null
+          boss_volunteer_1?: string | null
+          boss_volunteer_2?: string | null
+          boss_volunteer_3?: string | null
           current_team?: string | null
           id?: string
           intelligence_categories?: Json | null
