@@ -206,7 +206,10 @@ If a panel flashes red — that value is wrong. Search again.</div>
           <span style={{ fontFamily: 'monospace', fontSize: '18px', letterSpacing: '3px', flex: 1 }}>{doc.title}</span>
           <Link to="/" style={{ fontFamily: 'monospace', fontSize: '11px', letterSpacing: '2px', background: 'transparent', border: '1px solid #7a5200', color: '#7a5200', padding: '3px 10px', textDecoration: 'none' }}>← HUB</Link>
         </div>
-        <div className="flex-1 p-7 overflow-y-auto boss-doc-body" style={{ lineHeight: '2', fontSize: '12px', letterSpacing: '0.5px' }} dangerouslySetInnerHTML={{ __html: doc.html }} />
+        <div className="flex-1 p-7 overflow-y-auto boss-doc-body" style={{ lineHeight: '2', fontSize: '12px', letterSpacing: '0.5px' }}>
+          <div dangerouslySetInnerHTML={{ __html: doc.html }} />
+          <button onClick={goBack} style={{ fontFamily: 'monospace', fontSize: '15px', letterSpacing: '2px', background: 'transparent', border: '1px solid #7a5200', color: '#ffb000', padding: '8px 18px', cursor: 'pointer', marginTop: '28px', display: 'block' }}>◄ BACK TO FOLDER</button>
+        </div>
       </div>
     );
   }
