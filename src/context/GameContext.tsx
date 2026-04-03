@@ -35,6 +35,9 @@ export interface BossConfig {
   points: number;
   timeMinutes: number;
   timeSeconds: number;
+  volunteer1: string;
+  volunteer2: string;
+  volunteer3: string;
 }
 
 export interface TeamMember {
