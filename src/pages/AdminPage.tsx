@@ -173,6 +173,15 @@ const AdminPage = () => {
                   ))}
                 </select>
               </div>
+              <div>
+                <label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">VOLUNTEER 3</label>
+                <select value={room.volunteerName3} onChange={e => updateRoom(room.id, { volunteerName3: e.target.value })} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] outline-none focus:border-foreground">
+                  <option value="">— NONE —</option>
+                  {state.volunteers.map(v => (
+                    <option key={v.id} value={v.name}>{v.name}</option>
+                  ))}
+                </select>
+              </div>
             </div>
           ))}
         </div>

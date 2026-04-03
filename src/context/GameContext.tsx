@@ -172,6 +172,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           timeSeconds: r.time_seconds || 0,
           volunteerName: r.volunteer_name || '',
           volunteerName2: r.volunteer_name_2 || '',
+          volunteerName3: (r as any).volunteer_name_3 || '',
           activeTeamId: r.active_team_id || null,
         })),
         intelligence: {
