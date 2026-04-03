@@ -17,6 +17,30 @@ const AdminPage = () => {
   const [newVolPw, setNewVolPw] = useState('');
   const [editingVol, setEditingVol] = useState<string | null>(null);
   const [editVolPw, setEditVolPw] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  const handleAdminLogin = async () => {
+    if (loginLoading) return;
+    setLoginLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('verify-password', {
+        body: { type: 'admin', password: pwInput },
+      });
+      if (error || !data?.valid) {
+        setPwError('// ACCESS DENIED');
+        setTimeout(() => setPwError(''), 1500);
+        setPwInput('');
+      } else {
+        setAuthed(true);
+      }
+    } catch {
+      setPwError('// ACCESS DENIED');
+      setTimeout(() => setPwError(''), 1500);
+      setPwInput('');
+    } finally {
+      setLoginLoading(false);
+    }
+  };
 
   if (!authed) {
     return (
