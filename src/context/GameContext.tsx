@@ -134,7 +134,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       const { data: teams } = await supabase.from('teams').select('*');
       const { data: scores } = await supabase.from('team_scores').select('*');
       const { data: adjustments } = await supabase.from('point_adjustments').select('*').order('created_at', { ascending: false });
-      const { data: volunteers } = await supabase.from('volunteers').select('*').order('created_at');
+      const { data: volunteers } = await supabase.from('volunteers').select('id, name, created_at').order('created_at');
 
       if (!config || !rooms) return;
 
