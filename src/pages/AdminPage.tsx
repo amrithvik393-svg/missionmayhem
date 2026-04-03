@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Link } from 'react-router-dom';
 
 const AdminPage = () => {
-  const { state, updateRoom, updateIntelligence, updateBoss, addTeam, removeTeam, updateTeamMembers, setCurrentTeam, resetTeamScores, setAdminPassword, addVolunteer, removeVolunteer, updateVolunteer, updateTeamRotationFlow } = useGame();
+  const { state, updateRoom, updateIntelligence, updateBoss, addTeam, removeTeam, updateTeamMembers, setCurrentTeam, resetTeamScores, setAdminPassword, addVolunteer, removeVolunteer, updateVolunteer, updateTeamRotationFlow, setBossActiveTeam } = useGame();
   const [authed, setAuthed] = useState(false);
   const [pwInput, setPwInput] = useState('');
   const [pwError, setPwError] = useState('');
