@@ -14,7 +14,255 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      game_config: {
+        Row: {
+          admin_password: string
+          boss_active_team_id: string | null
+          boss_points: number | null
+          boss_room_password: string | null
+          boss_time_minutes: number | null
+          boss_time_seconds: number | null
+          boss_vital_bp: number | null
+          boss_vital_hr: number | null
+          boss_vital_nr: number | null
+          boss_vital_o2: number | null
+          current_team: string | null
+          id: string
+          intelligence_categories: Json | null
+          intelligence_correct_number: string | null
+          intelligence_gate_code: string | null
+          intelligence_points: number | null
+          intelligence_room_password: string | null
+          intelligence_time_minutes: number | null
+          intelligence_time_seconds: number | null
+          team_rotation_flow: Json | null
+          updated_at: string | null
+        }
+        Insert: {
+          admin_password?: string
+          boss_active_team_id?: string | null
+          boss_points?: number | null
+          boss_room_password?: string | null
+          boss_time_minutes?: number | null
+          boss_time_seconds?: number | null
+          boss_vital_bp?: number | null
+          boss_vital_hr?: number | null
+          boss_vital_nr?: number | null
+          boss_vital_o2?: number | null
+          current_team?: string | null
+          id?: string
+          intelligence_categories?: Json | null
+          intelligence_correct_number?: string | null
+          intelligence_gate_code?: string | null
+          intelligence_points?: number | null
+          intelligence_room_password?: string | null
+          intelligence_time_minutes?: number | null
+          intelligence_time_seconds?: number | null
+          team_rotation_flow?: Json | null
+          updated_at?: string | null
+        }
+        Update: {
+          admin_password?: string
+          boss_active_team_id?: string | null
+          boss_points?: number | null
+          boss_room_password?: string | null
+          boss_time_minutes?: number | null
+          boss_time_seconds?: number | null
+          boss_vital_bp?: number | null
+          boss_vital_hr?: number | null
+          boss_vital_nr?: number | null
+          boss_vital_o2?: number | null
+          current_team?: string | null
+          id?: string
+          intelligence_categories?: Json | null
+          intelligence_correct_number?: string | null
+          intelligence_gate_code?: string | null
+          intelligence_points?: number | null
+          intelligence_room_password?: string | null
+          intelligence_time_minutes?: number | null
+          intelligence_time_seconds?: number | null
+          team_rotation_flow?: Json | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      point_adjustments: {
+        Row: {
+          adjusted_by: string
+          created_at: string | null
+          id: string
+          points: number
+          reason: string | null
+          team_id: string
+        }
+        Insert: {
+          adjusted_by: string
+          created_at?: string | null
+          id?: string
+          points: number
+          reason?: string | null
+          team_id: string
+        }
+        Update: {
+          adjusted_by?: string
+          created_at?: string | null
+          id?: string
+          points?: number
+          reason?: string | null
+          team_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "point_adjustments_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rooms: {
+        Row: {
+          active_team_id: string | null
+          id: string
+          name: string
+          password: string | null
+          points: number | null
+          sort_order: number | null
+          time_minutes: number | null
+          time_seconds: number | null
+          updated_at: string | null
+          volunteer_name: string | null
+          volunteer_name_2: string | null
+        }
+        Insert: {
+          active_team_id?: string | null
+          id: string
+          name: string
+          password?: string | null
+          points?: number | null
+          sort_order?: number | null
+          time_minutes?: number | null
+          time_seconds?: number | null
+          updated_at?: string | null
+          volunteer_name?: string | null
+          volunteer_name_2?: string | null
+        }
+        Update: {
+          active_team_id?: string | null
+          id?: string
+          name?: string
+          password?: string | null
+          points?: number | null
+          sort_order?: number | null
+          time_minutes?: number | null
+          time_seconds?: number | null
+          updated_at?: string | null
+          volunteer_name?: string | null
+          volunteer_name_2?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rooms_active_team_id_fkey"
+            columns: ["active_team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      team_scores: {
+        Row: {
+          completed: boolean | null
+          created_at: string | null
+          id: string
+          points: number | null
+          room_id: string
+          team_id: string
+          time_elapsed: number | null
+        }
+        Insert: {
+          completed?: boolean | null
+          created_at?: string | null
+          id?: string
+          points?: number | null
+          room_id: string
+          team_id: string
+          time_elapsed?: number | null
+        }
+        Update: {
+          completed?: boolean | null
+          created_at?: string | null
+          id?: string
+          points?: number | null
+          room_id?: string
+          team_id?: string
+          time_elapsed?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_scores_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teams: {
+        Row: {
+          created_at: string | null
+          id: string
+          member1: string | null
+          member2: string | null
+          member3: string | null
+          member4: string | null
+          team_name: string
+          total_points: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          member1?: string | null
+          member2?: string | null
+          member3?: string | null
+          member4?: string | null
+          team_name: string
+          total_points?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          member1?: string | null
+          member2?: string | null
+          member3?: string | null
+          member4?: string | null
+          team_name?: string
+          total_points?: number | null
+        }
+        Relationships: []
+      }
+      volunteers: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+          password: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+          password?: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+          password?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
