@@ -99,7 +99,7 @@ But this was always going to happen. The only question was who would choose the 
 <p><strong style="color:hsl(348,100%,60%)">Immediate consequence:</strong> Tens of millions die in the initial cascade. But the survivors inherit permanent immunity to VX-17 and all related strains.</p>
 <p><strong style="color:hsl(152,100%,50%)">Long-term outcome:</strong> Within two generations, the majority of humanity carries heritable immunity. The pharmaceutical monopoly on treatment is broken forever.</p>
 <p>The cost is measured in lives. The benefit is measured in centuries.</p>
-<div class="doc-info">This is not a good ending. It is one of two terrible choices.</div>`
+`
     },
     containment: {
       title: 'CONTAINMENT_BOX_ACCESS.txt',
@@ -144,15 +144,13 @@ The exact target values are scattered around this room on small pieces of paper.
 <tr><td style="font-size:24px">🫁</td><td>Respiratory Rate</td><td>A number between 85-100 (SpO2 %)</td></tr>
 <tr><td style="font-size:24px">🧠</td><td>Neural Response</td><td>A number between 20-60 (Hz)</td></tr>
 </table>
-<div class="doc-warn">⚠ SEARCH THE ROOM THOROUGHLY.<br/>
-Find all 4 pieces of paper with the symbols above. The numbers on them are the exact values you need to enter into the BIOSYNC terminal sliders.<br/><br/>
-ALL FOUR VALUES MUST BE CORRECT SIMULTANEOUSLY.</div>
+<div class="doc-warn">⚠ the values are in the room. just look around.</div>
 <p style="opacity:0.5;font-style:italic">Whether Dr. Rao built this in deliberately — as a second chance, a test, or something else entirely — is not recorded anywhere.</p>`
     },
     override_sequence: {
       title: 'FLATLINE_SEQUENCE.txt',
       html: `<h2>FLATLINE SEQUENCE — STEP BY STEP</h2>
-<p><strong>STEP 1:</strong> Search the room for small pieces of paper. Each has a symbol (❤️, 🫀, 🫁, 🧠) and a number.</p>
+<p><strong>STEP 1:</strong> Find the override values of the vitals.</p>
 <p><strong>STEP 2:</strong> Go to the BIOSYNC terminal (the other laptop).</p>
 <p><strong>STEP 3:</strong> Adjust the ❤️ <strong>Cardiac Output</strong> slider to the number found on the ❤️ paper.</p>
 <p><strong>STEP 4:</strong> Adjust the 🫀 <strong>Blood Pressure</strong> slider to the number found on the 🫀 paper.</p>
@@ -162,8 +160,8 @@ ALL FOUR VALUES MUST BE CORRECT SIMULTANEOUSLY.</div>
 <div class="doc-warn">EXPECTED RESULT: Each correctly set panel turns green and displays ✓ FLATLINE MATCHED.<br/>
 All four must be green simultaneously for the override to succeed.<br/>
 If a panel flashes red — that value is wrong. Search again.</div>
-<p>Dr. Rao will remain alive. His research will remain intact. The bioweapon does not release. You save Dr. Rao — but you lose access to his research forever.</p>
-<p style="opacity:0.5;font-style:italic;border-left:2px solid hsl(var(--border));padding-left:12px;">You found another way. He didn't think anyone would.<br/><strong>Neither did we.</strong></p>`
+<p>Dr. Rao will remain alive. The bioweapon does not release. You save Dr. Rao and the millions of humans that would have dies for the cure — but you lose access to his research forever.</p>
+<p style="opacity:0.5;font-style:italic;border-left:2px solid hsl(var(--border));padding-left:12px;"><strong>was it worth it? is this the greater good?</strong></p>`
     },
   };
 
