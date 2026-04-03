@@ -119,7 +119,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<GameState>({
     rooms: [],
     intelligence: { gateCode: 'MONK', correctNumber: '9884512345', roomPassword: 'ENIGMA', points: 100, timeMinutes: 6, timeSeconds: 0, categories: [] },
-    boss: { password: 'GENESIS', vitalHr: 57, vitalBp: 145, vitalO2: 91, vitalNr: 44, points: 200, timeMinutes: 10, timeSeconds: 0 },
+    boss: { password: 'GENESIS', vitalHr: 57, vitalBp: 145, vitalO2: 91, vitalNr: 44, points: 200, timeMinutes: 10, timeSeconds: 0, volunteer1: '', volunteer2: '', volunteer3: '' },
     teams: [],
     currentTeam: '',
     adminPassword: 'admin',
