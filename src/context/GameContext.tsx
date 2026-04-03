@@ -10,6 +10,7 @@ export interface RoomConfig {
   timeSeconds: number;
   volunteerName: string;
   volunteerName2: string;
+  volunteerName3: string;
   activeTeamId: string | null;
 }
 
