@@ -1,0 +1,1 @@
+ALTER TABLE public.game_config ADD COLUMN boss_volunteer_1 text DEFAULT NULL, ADD COLUMN boss_volunteer_2 text DEFAULT NULL, ADD COLUMN boss_volunteer_3 text DEFAULT NULL;

@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Link } from 'react-router-dom';
 
 const AdminPage = () => {
-  const { state, updateRoom, updateIntelligence, updateBoss, addTeam, removeTeam, updateTeamMembers, setCurrentTeam, resetTeamScores, setAdminPassword, addVolunteer, removeVolunteer, updateVolunteer, updateTeamRotationFlow } = useGame();
+  const { state, updateRoom, updateIntelligence, updateBoss, addTeam, removeTeam, updateTeamMembers, setCurrentTeam, resetTeamScores, setAdminPassword, addVolunteer, removeVolunteer, updateVolunteer, updateTeamRotationFlow, setBossActiveTeam } = useGame();
   const [authed, setAuthed] = useState(false);
   const [pwInput, setPwInput] = useState('');
   const [pwError, setPwError] = useState('');
@@ -205,6 +205,44 @@ const AdminPage = () => {
           <div><label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">POINTS</label><input type="number" value={state.boss.points} onChange={e => updateBoss({ points: parseInt(e.target.value) || 0 })} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] text-center outline-none focus:border-foreground [appearance:textfield] [&::-webkit-inner-spin-button]:hidden" /></div>
           <div><label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">TIMER MIN</label><input type="number" value={state.boss.timeMinutes} onChange={e => updateBoss({ timeMinutes: parseInt(e.target.value) || 1 })} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] text-center outline-none focus:border-foreground [appearance:textfield] [&::-webkit-inner-spin-button]:hidden" /></div>
           <div><label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">TIMER SEC</label><input type="number" value={state.boss.timeSeconds} onChange={e => updateBoss({ timeSeconds: parseInt(e.target.value) || 0 })} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] text-center outline-none focus:border-foreground [appearance:textfield] [&::-webkit-inner-spin-button]:hidden" /></div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
+          <div>
+            <label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">ACTIVE TEAM</label>
+            <select value={state.bossActiveTeamId || ''} onChange={e => setBossActiveTeam(e.target.value || null)} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] outline-none focus:border-foreground">
+              <option value="">— NONE —</option>
+              {state.teams.map(t => (
+                <option key={t.id} value={t.id}>{t.teamName}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">VOLUNTEER 1</label>
+            <select value={state.boss.volunteer1} onChange={e => updateBoss({ volunteer1: e.target.value })} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] outline-none focus:border-foreground">
+              <option value="">— NONE —</option>
+              {state.volunteers.map(v => (
+                <option key={v.id} value={v.name}>{v.name}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">VOLUNTEER 2</label>
+            <select value={state.boss.volunteer2} onChange={e => updateBoss({ volunteer2: e.target.value })} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] outline-none focus:border-foreground">
+              <option value="">— NONE —</option>
+              {state.volunteers.map(v => (
+                <option key={v.id} value={v.name}>{v.name}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="text-[8px] tracking-[2px] text-muted-foreground block mb-1">VOLUNTEER 3</label>
+            <select value={state.boss.volunteer3} onChange={e => updateBoss({ volunteer3: e.target.value })} className="w-full bg-background border border-muted-foreground text-foreground font-display text-sm p-2 tracking-[2px] outline-none focus:border-foreground">
+              <option value="">— NONE —</option>
+              {state.volunteers.map(v => (
+                <option key={v.id} value={v.name}>{v.name}</option>
+              ))}
+            </select>
+          </div>
         </div>
       </section>
 

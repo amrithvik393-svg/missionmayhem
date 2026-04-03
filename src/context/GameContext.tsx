@@ -35,6 +35,9 @@ export interface BossConfig {
   points: number;
   timeMinutes: number;
   timeSeconds: number;
+  volunteer1: string;
+  volunteer2: string;
+  volunteer3: string;
 }
 
 export interface TeamMember {
@@ -116,7 +119,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<GameState>({
     rooms: [],
     intelligence: { gateCode: 'MONK', correctNumber: '9884512345', roomPassword: 'ENIGMA', points: 100, timeMinutes: 6, timeSeconds: 0, categories: [] },
-    boss: { password: 'GENESIS', vitalHr: 57, vitalBp: 145, vitalO2: 91, vitalNr: 44, points: 200, timeMinutes: 10, timeSeconds: 0 },
+    boss: { password: 'GENESIS', vitalHr: 57, vitalBp: 145, vitalO2: 91, vitalNr: 44, points: 200, timeMinutes: 10, timeSeconds: 0, volunteer1: '', volunteer2: '', volunteer3: '' },
     teams: [],
     currentTeam: '',
     adminPassword: 'admin',
@@ -129,7 +132,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const loadData = useCallback(async () => {
     try {
-      const { data: config } = await supabase.from('game_config').select('id, current_team, boss_active_team_id, boss_room_password, boss_vital_hr, boss_vital_bp, boss_vital_o2, boss_vital_nr, boss_points, boss_time_minutes, boss_time_seconds, intelligence_gate_code, intelligence_correct_number, intelligence_room_password, intelligence_points, intelligence_time_minutes, intelligence_time_seconds, intelligence_categories, team_rotation_flow').eq('id', 'main').single();
+      const { data: config } = await supabase.from('game_config').select('id, current_team, boss_active_team_id, boss_room_password, boss_vital_hr, boss_vital_bp, boss_vital_o2, boss_vital_nr, boss_points, boss_time_minutes, boss_time_seconds, boss_volunteer_1, boss_volunteer_2, boss_volunteer_3, intelligence_gate_code, intelligence_correct_number, intelligence_room_password, intelligence_points, intelligence_time_minutes, intelligence_time_seconds, intelligence_categories, team_rotation_flow').eq('id', 'main').single();
       const { data: rooms } = await supabase.from('rooms').select('*').order('sort_order');
       const { data: teams } = await supabase.from('teams').select('*');
       const { data: scores } = await supabase.from('team_scores').select('*');
@@ -188,6 +191,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           points: config.boss_points || 200,
           timeMinutes: config.boss_time_minutes || 10,
           timeSeconds: config.boss_time_seconds || 0,
+          volunteer1: (config as any).boss_volunteer_1 || '',
+          volunteer2: (config as any).boss_volunteer_2 || '',
+          volunteer3: (config as any).boss_volunteer_3 || '',
         },
         teams: teamList,
         currentTeam: config.current_team || '',
@@ -327,6 +333,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     if (config.points !== undefined) update.boss_points = config.points;
     if (config.timeMinutes !== undefined) update.boss_time_minutes = config.timeMinutes;
     if (config.timeSeconds !== undefined) update.boss_time_seconds = config.timeSeconds;
+    if (config.volunteer1 !== undefined) update.boss_volunteer_1 = config.volunteer1;
+    if (config.volunteer2 !== undefined) update.boss_volunteer_2 = config.volunteer2;
+    if (config.volunteer3 !== undefined) update.boss_volunteer_3 = config.volunteer3;
     await runMutationAndRefresh(supabase.from('game_config').update(update).eq('id', 'main'));
   }, [runMutationAndRefresh]);
 
