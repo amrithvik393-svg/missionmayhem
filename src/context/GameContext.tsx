@@ -191,7 +191,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         },
         teams: teamList,
         currentTeam: config.current_team || '',
-        adminPassword: config.admin_password || 'admin',
+        adminPassword: '',
         adjustments: (adjustments || []).map(a => ({
           id: a.id,
           teamId: a.team_id,
