@@ -144,9 +144,7 @@ The exact target values are scattered around this room on small pieces of paper.
 <tr><td style="font-size:24px">🫁</td><td>Respiratory Rate</td><td>A number between 85-100 (SpO2 %)</td></tr>
 <tr><td style="font-size:24px">🧠</td><td>Neural Response</td><td>A number between 20-60 (Hz)</td></tr>
 </table>
-<div class="doc-warn">⚠ SEARCH THE ROOM THOROUGHLY.<br/>
-Find all 4 pieces of paper with the symbols above. The numbers on them are the exact values you need to enter into the BIOSYNC terminal sliders.<br/><br/>
-ALL FOUR VALUES MUST BE CORRECT SIMULTANEOUSLY.</div>
+<div class="doc-warn">⚠ the values are in the room. just look around.</div>
 <p style="opacity:0.5;font-style:italic">Whether Dr. Rao built this in deliberately — as a second chance, a test, or something else entirely — is not recorded anywhere.</p>`
     },
     override_sequence: {
