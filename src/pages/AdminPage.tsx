@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useGame } from '@/context/GameContext';
+import { supabase } from '@/integrations/supabase/client';
 import { Link } from 'react-router-dom';
 
 const AdminPage = () => {
