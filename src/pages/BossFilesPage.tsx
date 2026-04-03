@@ -99,7 +99,7 @@ But this was always going to happen. The only question was who would choose the 
 <p><strong style="color:hsl(348,100%,60%)">Immediate consequence:</strong> Tens of millions die in the initial cascade. But the survivors inherit permanent immunity to VX-17 and all related strains.</p>
 <p><strong style="color:hsl(152,100%,50%)">Long-term outcome:</strong> Within two generations, the majority of humanity carries heritable immunity. The pharmaceutical monopoly on treatment is broken forever.</p>
 <p>The cost is measured in lives. The benefit is measured in centuries.</p>
-<div class="doc-info">This is not a good ending. It is one of two terrible choices.</div>`
+`
     },
     containment: {
       title: 'CONTAINMENT_BOX_ACCESS.txt',
