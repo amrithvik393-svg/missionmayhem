@@ -307,6 +307,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     if (config.timeSeconds !== undefined) update.time_seconds = config.timeSeconds;
     if (config.volunteerName !== undefined) update.volunteer_name = config.volunteerName;
     if (config.volunteerName2 !== undefined) update.volunteer_name_2 = config.volunteerName2;
+    if (config.volunteerName3 !== undefined) update.volunteer_name_3 = config.volunteerName3;
     if (config.name !== undefined) update.name = config.name;
     if (config.activeTeamId !== undefined) update.active_team_id = config.activeTeamId;
     await runMutationAndRefresh(supabase.from('rooms').update(update).eq('id', roomId));
