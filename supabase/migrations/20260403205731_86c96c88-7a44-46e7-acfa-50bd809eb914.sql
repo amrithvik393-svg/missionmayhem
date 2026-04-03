@@ -1,0 +1,1 @@
+ALTER TABLE public.rooms ADD COLUMN volunteer_name_3 text DEFAULT NULL;

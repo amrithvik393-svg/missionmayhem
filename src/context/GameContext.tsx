@@ -10,6 +10,7 @@ export interface RoomConfig {
   timeSeconds: number;
   volunteerName: string;
   volunteerName2: string;
+  volunteerName3: string;
   activeTeamId: string | null;
 }
 
@@ -171,6 +172,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           timeSeconds: r.time_seconds || 0,
           volunteerName: r.volunteer_name || '',
           volunteerName2: r.volunteer_name_2 || '',
+          volunteerName3: (r as any).volunteer_name_3 || '',
           activeTeamId: r.active_team_id || null,
         })),
         intelligence: {
@@ -306,6 +308,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     if (config.timeSeconds !== undefined) update.time_seconds = config.timeSeconds;
     if (config.volunteerName !== undefined) update.volunteer_name = config.volunteerName;
     if (config.volunteerName2 !== undefined) update.volunteer_name_2 = config.volunteerName2;
+    if (config.volunteerName3 !== undefined) update.volunteer_name_3 = config.volunteerName3;
     if (config.name !== undefined) update.name = config.name;
     if (config.activeTeamId !== undefined) update.active_team_id = config.activeTeamId;
     await runMutationAndRefresh(supabase.from('rooms').update(update).eq('id', roomId));

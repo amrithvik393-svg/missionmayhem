@@ -143,6 +143,7 @@ export type Database = {
           updated_at: string | null
           volunteer_name: string | null
           volunteer_name_2: string | null
+          volunteer_name_3: string | null
         }
         Insert: {
           active_team_id?: string | null
@@ -156,6 +157,7 @@ export type Database = {
           updated_at?: string | null
           volunteer_name?: string | null
           volunteer_name_2?: string | null
+          volunteer_name_3?: string | null
         }
         Update: {
           active_team_id?: string | null
@@ -169,6 +171,7 @@ export type Database = {
           updated_at?: string | null
           volunteer_name?: string | null
           volunteer_name_2?: string | null
+          volunteer_name_3?: string | null
         }
         Relationships: [
           {
