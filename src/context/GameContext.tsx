@@ -333,6 +333,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     if (config.points !== undefined) update.boss_points = config.points;
     if (config.timeMinutes !== undefined) update.boss_time_minutes = config.timeMinutes;
     if (config.timeSeconds !== undefined) update.boss_time_seconds = config.timeSeconds;
+    if (config.volunteer1 !== undefined) update.boss_volunteer_1 = config.volunteer1;
+    if (config.volunteer2 !== undefined) update.boss_volunteer_2 = config.volunteer2;
+    if (config.volunteer3 !== undefined) update.boss_volunteer_3 = config.volunteer3;
     await runMutationAndRefresh(supabase.from('game_config').update(update).eq('id', 'main'));
   }, [runMutationAndRefresh]);
 
