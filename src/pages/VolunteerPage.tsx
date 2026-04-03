@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGame } from '@/context/GameContext';
+import { supabase } from '@/integrations/supabase/client';
 import { playSuccess } from '@/lib/sounds';
 import { getRoomColor } from '@/lib/roomColors';
 
@@ -75,20 +76,24 @@ const VolunteerPage = () => {
     );
   }
 
-  function attemptLogin() {
-    const vol = state.volunteers.find(v => v.name.toLowerCase() === volName.trim().toLowerCase());
-    if (!vol) {
-      setLoginError('// VOLUNTEER NOT FOUND');
+  async function attemptLogin() {
+    try {
+      const { data, error } = await supabase.functions.invoke('verify-password', {
+        body: { type: 'volunteer', password: volPw, volunteerName: volName.trim() },
+      });
+      if (error || !data?.valid) {
+        setLoginError('// INVALID CREDENTIALS');
+        setTimeout(() => setLoginError(''), 2000);
+        return;
+      }
+      // Find the volunteer name from state (for display)
+      const vol = state.volunteers.find(v => v.name.toLowerCase() === volName.trim().toLowerCase());
+      if (vol) setVolName(vol.name);
+      setAuthed(true);
+    } catch {
+      setLoginError('// AUTHENTICATION ERROR');
       setTimeout(() => setLoginError(''), 2000);
-      return;
     }
-    if (vol.password !== volPw) {
-      setLoginError('// INCORRECT PASSWORD');
-      setTimeout(() => setLoginError(''), 2000);
-      return;
-    }
-    setVolName(vol.name);
-    setAuthed(true);
   }
 
   const handleAdjust = () => {

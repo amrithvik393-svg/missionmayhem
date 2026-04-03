@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useGame } from '@/context/GameContext';
+import { supabase } from '@/integrations/supabase/client';
 import { Link } from 'react-router-dom';
 
 const AdminPage = () => {
@@ -16,6 +17,30 @@ const AdminPage = () => {
   const [newVolPw, setNewVolPw] = useState('');
   const [editingVol, setEditingVol] = useState<string | null>(null);
   const [editVolPw, setEditVolPw] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  const handleAdminLogin = async () => {
+    if (loginLoading) return;
+    setLoginLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('verify-password', {
+        body: { type: 'admin', password: pwInput },
+      });
+      if (error || !data?.valid) {
+        setPwError('// ACCESS DENIED');
+        setTimeout(() => setPwError(''), 1500);
+        setPwInput('');
+      } else {
+        setAuthed(true);
+      }
+    } catch {
+      setPwError('// ACCESS DENIED');
+      setTimeout(() => setPwError(''), 1500);
+      setPwInput('');
+    } finally {
+      setLoginLoading(false);
+    }
+  };
 
   if (!authed) {
     return (
@@ -23,8 +48,8 @@ const AdminPage = () => {
         <div className="font-display text-[13px] tracking-[5px] text-secondary-foreground">ADMIN ACCESS</div>
         <div className="border border-border bg-card p-8 w-full max-w-md flex flex-col gap-4 panel-glow">
           <label className="text-[9px] tracking-[3px] text-secondary-foreground">ADMIN PASSWORD</label>
-          <input type="password" value={pwInput} onChange={e => setPwInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') { if (pwInput === state.adminPassword) setAuthed(true); else { setPwError('// ACCESS DENIED'); setTimeout(() => setPwError(''), 1500); setPwInput(''); } } }} className="w-full bg-background border border-muted-foreground text-foreground font-display text-xl p-3 tracking-[4px] text-center outline-none focus:border-foreground focus:shadow-[0_0_15px_hsla(152,100%,50%,0.15)]" />
-          <button onClick={() => { if (pwInput === state.adminPassword) setAuthed(true); else { setPwError('// ACCESS DENIED'); setTimeout(() => setPwError(''), 1500); setPwInput(''); } }} className="w-full py-3 border border-foreground text-foreground font-display text-[12px] tracking-[4px] hover:bg-foreground hover:text-background transition-all">AUTHENTICATE</button>
+          <input type="password" value={pwInput} onChange={e => setPwInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleAdminLogin(); }} className="w-full bg-background border border-muted-foreground text-foreground font-display text-xl p-3 tracking-[4px] text-center outline-none focus:border-foreground focus:shadow-[0_0_15px_hsla(152,100%,50%,0.15)]" />
+          <button onClick={handleAdminLogin} className="w-full py-3 border border-foreground text-foreground font-display text-[12px] tracking-[4px] hover:bg-foreground hover:text-background transition-all">AUTHENTICATE</button>
           {pwError && <div className="text-destructive text-[10px] tracking-[2px] text-center">{pwError}</div>}
         </div>
         <Link to="/" className="text-muted-foreground text-[10px] tracking-[2px] hover:text-foreground">← BACK TO HUB</Link>
