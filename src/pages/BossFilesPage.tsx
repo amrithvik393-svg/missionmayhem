@@ -202,7 +202,7 @@ If a panel flashes red — that value is wrong. Search again.</div>
           ΣAGENCY CLASSIFIED TERMINAL
         </div>
         <div style={{ background: '#0d0900', borderBottom: '1px solid #2a1c00', padding: '8px 14px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <button onClick={goBack} style={{ fontFamily: 'monospace', fontSize: '15px', letterSpacing: '2px', background: 'transparent', border: '1px solid #7a5200', color: '#ffb000', padding: '3px 10px', cursor: 'pointer' }}>◄ BACK</button>
+          <button onClick={goBack} style={{ fontFamily: 'monospace', fontSize: '15px', letterSpacing: '2px', background: 'transparent', border: '1px solid #7a5200', color: '#ffb000', padding: '6px 14px', cursor: 'pointer' }}>◄ BACK TO FOLDER</button>
           <span style={{ fontFamily: 'monospace', fontSize: '18px', letterSpacing: '3px', flex: 1 }}>{doc.title}</span>
           <Link to="/" style={{ fontFamily: 'monospace', fontSize: '11px', letterSpacing: '2px', background: 'transparent', border: '1px solid #7a5200', color: '#7a5200', padding: '3px 10px', textDecoration: 'none' }}>← HUB</Link>
         </div>
