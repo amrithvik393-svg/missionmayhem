@@ -150,7 +150,7 @@ The exact target values are scattered around this room on small pieces of paper.
     override_sequence: {
       title: 'FLATLINE_SEQUENCE.txt',
       html: `<h2>FLATLINE SEQUENCE — STEP BY STEP</h2>
-<p><strong>STEP 1:</strong> Search the room for small pieces of paper. Each has a symbol (❤️, 🫀, 🫁, 🧠) and a number.</p>
+<p><strong>STEP 1:</strong> Find the override values of the vitals.</p>
 <p><strong>STEP 2:</strong> Go to the BIOSYNC terminal (the other laptop).</p>
 <p><strong>STEP 3:</strong> Adjust the ❤️ <strong>Cardiac Output</strong> slider to the number found on the ❤️ paper.</p>
 <p><strong>STEP 4:</strong> Adjust the 🫀 <strong>Blood Pressure</strong> slider to the number found on the 🫀 paper.</p>
@@ -160,8 +160,8 @@ The exact target values are scattered around this room on small pieces of paper.
 <div class="doc-warn">EXPECTED RESULT: Each correctly set panel turns green and displays ✓ FLATLINE MATCHED.<br/>
 All four must be green simultaneously for the override to succeed.<br/>
 If a panel flashes red — that value is wrong. Search again.</div>
-<p>Dr. Rao will remain alive. His research will remain intact. The bioweapon does not release. You save Dr. Rao — but you lose access to his research forever.</p>
-<p style="opacity:0.5;font-style:italic;border-left:2px solid hsl(var(--border));padding-left:12px;">You found another way. He didn't think anyone would.<br/><strong>Neither did we.</strong></p>`
+<p>Dr. Rao will remain alive. The bioweapon does not release. You save Dr. Rao and the millions of humans that would have dies for the cure — but you lose access to his research forever.</p>
+<p style="opacity:0.5;font-style:italic;border-left:2px solid hsl(var(--border));padding-left:12px;"><strong>was it worth it? is this the greater good?</strong></p>`
     },
   };
 
