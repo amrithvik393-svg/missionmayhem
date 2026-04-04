@@ -72,6 +72,27 @@ Deno.serve(async (req) => {
       );
     }
 
+    if (type === "intelligence-room") {
+      const { data, error } = await supabase
+        .from("game_config")
+        .select("intelligence_room_password")
+        .eq("id", "main")
+        .single();
+
+      if (error || !data) {
+        return new Response(
+          JSON.stringify({ valid: false }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      const correct = (data.intelligence_room_password || "").toUpperCase();
+      return new Response(
+        JSON.stringify({ valid: correct === password.toUpperCase() }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     return new Response(
       JSON.stringify({ error: "Invalid type" }),
       { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }

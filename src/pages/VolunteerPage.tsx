@@ -177,7 +177,7 @@ const VolunteerPage = () => {
 
                   {/* Launch room timer button */}
                   <button
-                    onClick={() => navigate(`/room/${r.id}`)}
+                    onClick={() => navigate(r.id.toLowerCase().includes('intelligence') ? '/intelligence' : `/room/${r.id}`)}
                     className={`w-full py-3 border font-display text-[11px] tracking-[3px] relative overflow-hidden group transition-all ${
                       isCompleted
                         ? 'border-foreground/30 text-foreground/50'
