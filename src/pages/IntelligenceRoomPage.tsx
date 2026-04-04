@@ -265,19 +265,34 @@ const IntelligenceRoomPage = () => {
           </button>
         </div>
 
-        <div className="w-full max-w-md border border-border bg-card p-6 panel-glow">
+        <div className="w-full max-w-sm border border-border bg-card p-6 panel-glow">
           <div className="text-[9px] tracking-[3px] text-secondary-foreground mb-3 text-center">📞 ENTER THE CORRECT PHONE NUMBER</div>
-          <div className="flex gap-3">
-            <input
-              type="tel"
-              value={phoneInput}
-              onChange={e => setPhoneInput(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') checkPhone(); }}
-              placeholder="PHONE NUMBER"
-              className="flex-1 bg-background border border-muted-foreground text-foreground font-display text-xl p-3 tracking-[3px] text-center outline-none focus:border-foreground focus:shadow-[0_0_15px_hsla(152,100%,50%,0.15)]"
-            />
-            <button onClick={checkPhone} className="px-5 py-3 border border-foreground text-foreground font-display text-[11px] tracking-[3px] hover:bg-foreground hover:text-background transition-all">
-              CALL
+          <div className="bg-background border border-muted-foreground text-foreground font-display text-2xl p-3 tracking-[6px] text-center mb-4 min-h-[52px] flex items-center justify-center">
+            {phoneInput || <span className="text-muted-foreground text-lg tracking-[3px]">_ _ _ _ _ _ _</span>}
+          </div>
+          <div className="grid grid-cols-3 gap-2 mb-4">
+            {['1','2','3','4','5','6','7','8','9','*','0','#'].map(key => (
+              <button
+                key={key}
+                onClick={() => { playDTMF(key); setPhoneInput(prev => prev + key); }}
+                className="py-4 border border-muted-foreground text-foreground font-display text-xl tracking-[2px] hover:bg-foreground/10 hover:border-foreground active:bg-foreground/20 transition-all"
+              >
+                {key}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setPhoneInput(prev => prev.slice(0, -1))}
+              className="flex-1 py-3 border border-warning text-warning font-display text-[11px] tracking-[3px] hover:bg-warning hover:text-warning-foreground transition-all"
+            >
+              ← DELETE
+            </button>
+            <button
+              onClick={checkPhone}
+              className="flex-1 py-3 border border-foreground text-foreground font-display text-[11px] tracking-[3px] hover:bg-foreground hover:text-background transition-all"
+            >
+              📞 CALL
             </button>
           </div>
           {phoneError && <div className="text-destructive text-[10px] tracking-[2px] text-center mt-2">{phoneError}</div>}
