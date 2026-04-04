@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from '@/context/GameContext';
-import { playSuccess, playFail, playMissionFailed } from '@/lib/sounds';
+import { playSuccess, playFail, playMissionFailed, playDTMF } from '@/lib/sounds';
 import { MissionFailedFlash } from '@/components/MissionFailedFlash';
 import { startBgMusic, stopBgMusic } from '@/lib/bgMusic';
 
