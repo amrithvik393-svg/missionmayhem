@@ -33,7 +33,7 @@ const VolunteerPage = () => {
 
   // Get rooms assigned to this volunteer
   const assignedRooms = state.rooms.filter(
-    r => r.volunteerName.toLowerCase() === volName.toLowerCase() || r.volunteerName2.toLowerCase() === volName.toLowerCase()
+    r => r.volunteerName.toLowerCase() === volName.toLowerCase() || r.volunteerName2.toLowerCase() === volName.toLowerCase() || r.volunteerName3.toLowerCase() === volName.toLowerCase()
   );
 
   // Initialize timers when state loads
