@@ -235,7 +235,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const shouldSuspendLiveRefresh = useCallback(() => {
     const path = window.location.pathname;
-    return path.startsWith('/room/') || path === '/boss/vitals' || path === '/boss/files';
+    return path.startsWith('/room/') || path === '/boss/vitals' || path === '/boss/files' || path === '/intelligence';
   }, []);
 
   const calculateCompletionPoints = useCallback((roomId: string, basePoints: number, timeElapsed: number) => {
